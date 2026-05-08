@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Method ChatGPT Plus @yogakokxd</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="checkout-card">
+            <div class="card-header">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h2></h2>
+                <p>Please enter your session token to proceed with the checkout process.</p>
+            </div>
+
+            <form id="paymentForm" class="checkout-form">
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <div class="method-selector">
+                        <label class="method-option">
+                            <input type="radio" name="paymentMethod" value="shortlink" checked>
+                            <div class="method-card">
+                                <div class="method-icon"><i class="fa-solid fa-bolt"></i></div>
+                                <div class="method-details">
+                                    <h4>Direct Checkout (GPT)</h4>
+                                    <p>Fast, direct processing</p>
+                                </div>
+                                <div class="radio-indicator"></div>
+                            </div>
+                        </label>
+                        
+                        <label class="method-option">
+                            <input type="radio" name="paymentMethod" value="longlink">
+                            <div class="method-card">
+                                <div class="method-icon"><i class="fa-brands fa-stripe"></i></div>
+                                <div class="method-details">
+                                    <h4>Stripe Hosting</h4>
+                                    <p>Standard payment gateway</p>
+                                </div>
+                                <div class="radio-indicator"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sessionToken">Session Token</label>
+                    <div class="input-container">
+                        <i class="fa-solid fa-key input-icon"></i>
+                        <input type="password" id="sessionToken" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI..." required>
+                        <button type="button" class="toggle-password" id="toggleVisibility" tabindex="-1"
+                            title="Toggle visibility">
+                            <i class="fa-solid fa-eye" id="eyeIcon"></i>
+                        </button>
+                    </div>
+                    <div class="form-help">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Obtain your token from <a href="https://chatgpt.com/api/auth/session" target="_blank"
+                                rel="noopener">authorization portal</a>.</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="submitBtn" class="btn-submit">
+                        <span id="btnText">Generate Checkout Link</span>
+                        <div class="spinner hidden" id="btnSpinner"></div>
+                    </button>
+                </div>
+            </form>
+
+            <div id="resultContainer" class="result-section hidden">
+                <div class="divider"></div>
+                <div id="successState" class="state-container hidden">
+                    <div class="status-icon success">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3>Authentication Successful</h3>
+                    <p>Your session has been validated. You can now proceed to payment.</p>
+                    <a href="#" id="checkoutUrl" target="_blank" class="btn-checkout">
+                        Proceed to Payment <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <div id="errorState" class="state-container hidden">
+                    <div class="status-icon error">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <h3>Authentication Failed</h3>
+                    <p id="errorText" class="error-msg">The provided token is invalid or has expired.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p><i class="fa-solid fa-lock"></i> Secured via 256-bit SSL Encryption</p>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

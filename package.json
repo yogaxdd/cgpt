@@ -1,0 +1,13 @@
+{
+  "name": "gpt-checkout-proxy",
+  "version": "1.0.0",
+  "description": "CORS proxy + static server for GPT Checkout",
+  "main": "proxy.js",
+  "scripts": {
+    "start": "node proxy.js",
+    "dev": "node proxy.js"
+  },
+  "keywords": [],
+  "author": "yogakokxd",
+  "license": "ISC"
+}
