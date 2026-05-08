@@ -3,7 +3,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 8000;
+const PORT = parseInt(process.argv[2]) || parseInt(process.env.PORT) || 8000;
 const TARGET_URL = 'https://ezweystock.petrix.id/gpt/payment';
 
 // MIME types untuk static files
@@ -129,4 +129,13 @@ server.listen(PORT, () => {
     console.log(`\x1b[32m✓ Proxy server running → http://localhost:${PORT}\x1b[0m`);
     console.log(`\x1b[36m  API endpoint : POST /api/payment\x1b[0m`);
     console.log(`\x1b[36m  Static files : /public/\x1b[0m`);
+});
+
+server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.error(`\x1b[31m✗ Port ${PORT} sudah dipakai. Coba: node proxy.js ${PORT + 1}\x1b[0m`);
+    } else {
+        console.error(`\x1b[31m✗ Error: ${err.message}\x1b[0m`);
+    }
+    process.exit(1);
 });
